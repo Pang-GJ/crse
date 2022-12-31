@@ -2,7 +2,7 @@
 
 #include "model/params.h"
 
-// Model is interface for all models
+// Model is the interface for all models
 class Model {
  public:
   Model() = default;

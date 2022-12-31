@@ -97,7 +97,7 @@ Params Params::Overwrite(const Params &params) const {
 std::string Params::ToString() const {
   nlohmann::json json;
   for (const auto &[k, v] : params_) {
-    json[k] = GetString(k, "null");
+    json[k] = GetString(k);
   }
   return json.dump();
 }
