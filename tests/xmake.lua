@@ -1,7 +1,15 @@
 add_requires("doctest", {system = false})
+add_requires("fmt")
 
 target("test_hello")
   set_kind("binary")
   set_group("tests")
   add_files("$(projectdir)/tests/test_hello.cpp")
   add_packages("doctest")
+
+target("test_params")
+  set_kind("binary")
+  set_group("tests")
+  add_files("$(projectdir)/tests/model/test_params.cpp")
+  add_deps("crse")
+  add_packages("doctest", "fmt")
