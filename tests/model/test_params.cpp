@@ -54,6 +54,16 @@ TEST_CASE("test params GetString") {
   CHECK("3.000000" == params.GetString(SIMILARITY));
 }
 
+TEST_CASE("test params over write") { 
+  Params a{{{N_FACTORS, 10}, {LR, 0.5}}};
+  Params b{{{N_EPOCHS, 120}, {N_FACTORS, 20}}};
+
+  auto c = a.Overwrite(b);
+  CHECK(20 == c.GetInt(N_FACTORS, -1));
+  CHECK(0.5 == c.GetDouble(LR, 0.1));
+  CHECK(120 == c.GetInt(N_EPOCHS, 0));
+}
+
 TEST_CASE("test param grid") {
   ParamsGrid grid{};
   grid["a"] = {0, 1};
