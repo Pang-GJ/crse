@@ -1,4 +1,4 @@
-add_requires("doctest")
+add_requires("doctest", {system = false})
 
 target("test_hello")
   set_kind("binary")
