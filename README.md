@@ -1,5 +1,6 @@
-# Tiny C++ Project Template
-This is a tiny C++ project template using xmake.  
+# C++ Recommender System Engine (crse)
+A recommender system engine in C++, same as gorse.
+Just for learning.
 
 The requirements are:
 - xmake
