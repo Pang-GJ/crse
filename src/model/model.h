@@ -25,27 +25,23 @@ class Model {
 // BaseModel model must be included by every recommendation model.
 // Hyper-parameters, ID sets, random generator and fitting options are managed
 // the BaseModel model.
-class BaseModel : public Model {
+// 模型并不是继承自BaseModel，而是组合关系，模型应该继承Model类
+class BaseModel {
  public:
   explicit BaseModel(Params params)
       : params_(std::move(params)),
         rand_state_(params.GetInt64(RANDOM_STATE, 0)),
         rng_(rand_state_) {}
 
-  void SetParams(Params params) override {
+  void SetParams(Params params) {
     params_ = std::move(params);
     rand_state_ = params_.GetInt64(RANDOM_STATE, 0);
     rng_ = RandomGenerator(rand_state_);
   }
 
-  Params GetParams() override { return params_; }
-
-  ParamsGrid GetParamsGrid() override { return {}; }
+  Params GetParams() { return params_; }
 
   RandomGenerator &GetRandomGenerator() { return rng_; }
-
-  // no thing
-  void Clear() override {}
 
   Params params_;  // Hyper-parameters
 
